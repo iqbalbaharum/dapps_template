@@ -1,10 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "./gradient1.scss";
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 // app global css in SCSS form
 .bn-block {
+  width: 1150px !important;
   margin: 0 auto;
   position: relative;
+  display: block;
 }
 
 .bn-screen {
   height: 92vh;
   width: 100vh;
+}
+
+.bg-main-block {
+  background: rgba(255, 255, 255, 1);
+}
+
+.bn-card {
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.bn-bg-gradient-1 {
+  background: linear-gradient(270deg, #f49a44, #fbcc46);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
+.bn-bg-color-twitter {
+  background-color: #1da1f2;
+}
+
+.bn-bg-color-telegram {
+  background-color: #0088cc;
+}
+
+.bn-text-color-twitter {
+  color: #1da1f2;
+}
+
+.bn-text-color-telegram {
+  color: #0088cc;
 }

@@ -38,6 +38,16 @@ const routes = [
         },
         component: () => import('pages/Gems.vue')
       },
+      {
+        path: '/project/:id',
+        meta: {
+          title: '',
+          position: '',
+          icon: '',
+          roles: []
+        },
+        component: () => import('src/pages/project/Index.vue')
+      },
     ]
   },
 

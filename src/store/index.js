@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import getters from './getters';
 
 import app from './module/app'
+import contract from './module/contract'
+import project from './module/project'
 
 // import example from './module-example'
 
@@ -20,7 +22,9 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      app
+      app,
+      contract,
+      project
     },
     getters,
     // enable strict mode (adds overhead!)

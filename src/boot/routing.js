@@ -107,8 +107,6 @@ export default async ({ app, router, store, Vue }) => {
 
       store.dispatch('SetMenu', menus);
 
-      console.log(menus)
-
       switch(to.path) {
         case '/':
           next({ path: '/public' });

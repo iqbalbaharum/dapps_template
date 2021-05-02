@@ -10,10 +10,6 @@ const app = {
     }
   },
   actions: {
-    // async InitializeApp({ commit }) {
-    //   let res = await this.$web3()
-    //   console.log(res)
-    // }
     SetMenu({ commit }, menus) {
       commit('SET_MENUS', menus)
     }

@@ -1,17 +1,21 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar class="q-py-md">
-
-        <q-toolbar-title>
-          RD AUDITORS
-        </q-toolbar-title>
+      <q-toolbar class="bg-white text-black">
+        
+        <q-btn to="/" flat dense>
+          <q-avatar size="80px">
+            <q-img src="~assets/main/rdlabs-logo.jpeg" />
+          </q-avatar>
+        </q-btn>
 
         <q-space />
 
         <header-link v-for="(menu, index) in menus['header']" :key="index" :label="menu.meta.title" :to="menu.path" />
 
-        <q-btn class="q-ml-md" padding="xs lg" outline label="Connect Wallet" />
+        <q-btn push class="q-ml-md sign-in" :class="{ 'bg-positive': walletId, 'bg-accent': !walletId }" color="accent" padding="xs lg" @click="onClickConnect">
+          <span class="ellipsis">{{ getWalletText }}</span>
+        </q-btn>
 
       </q-toolbar>
     </q-header>
@@ -19,6 +23,9 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -36,8 +43,29 @@ export default {
 
   computed: {
     ...mapGetters([
-      'menus'
-    ])
-  }
+      'menus',
+      'walletId',
+      'networkId'
+    ]),
+    getWalletText() {
+      let text = 'Connect Wallet'
+      return this.walletId && this.networkId !== 0 ? this.walletId : text
+    }
+  },
+
+  methods: {
+    onClickConnect() {
+      if(!this.walletId) {
+        this.$store.dispatch('ConnectWeb3')
+      } else {
+        this.$store.dispatch('DisconnectWeb3')
+      }
+    }
+  },
 }
 </script>
+
+<style lang="sass" scoped>
+.sign-in
+  max-width: 200px
+</style>
