@@ -38,8 +38,8 @@
               </div>
             </div>
             <div class="q-py-md row  q-gutter-x-md bg-blue-1 justify-center q-my-md" v-if="isWhitelist">
-              <q-btn push color="accent" size="lg" padding="sm xl"><span class="text-body1 text-weight-medium">Buy Token</span></q-btn>
-              <q-btn push color="blue-5" size="lg" padding="sm xl"><span class="text-body1 text-weight-medium">Claim Token</span></q-btn>
+              <q-btn push color="accent" size="lg" padding="sm xl" @click="onClickBuy"><span class="text-body1 text-weight-medium">Buy Token</span></q-btn>
+              <q-btn push color="blue-5" size="lg" padding="sm xl" @click="onClickClaim"><span class="text-body1 text-weight-medium">Claim Token</span></q-btn>
             </div>
             <div class="q-py-md row  q-gutter-x-md bg-blue-1 justify-center q-my-md" v-else>
               <div>You're not whitelisted to bid on this project</div>
@@ -114,10 +114,13 @@
         </div>
       </div>
     </div>
+
+    <dialog-buy v-model="dialog.buy.show" />
   </q-page>
 </template>
 
 <script>
+import DialogBuy from './dialog/DialogBuy'
 import FlipCountdown from "vue2-flip-countdown";
 import TabAbout from './tab/About'
 import { mapGetters } from 'vuex'
@@ -127,13 +130,18 @@ const { getScrollTarget, setScrollPosition } = scroll
 
 export default {
   components: {
-    FlipCountdown, TabAbout
+    FlipCountdown, TabAbout, DialogBuy
   },
   data() {
     return {
       currentTab: 'detail',
       active: false,
       isWhitelist: false,
+      dialog: {
+        buy: {
+          show: false
+        }
+      },
       project: {
         icon: 'https://cdn.quasar.dev/img/avatar.png',
         title: 'Wall Street Bets IDO',
@@ -193,6 +201,12 @@ export default {
     },
     async isUserWhitelisted() {
       this.isWhitelist = await this.$store.dispatch('IsWhitelisted')
+    },
+    onClickBuy() {
+      this.dialog.buy.show = true
+    },
+    onClickClaim() {
+
     }
   }
 }

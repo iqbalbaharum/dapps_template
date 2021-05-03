@@ -15,6 +15,17 @@ const project = {
             reject(e)
           }) 
       })
+    },
+    async BuyToken({ rootState }, amount) {
+      new Promise((resolve, reject) => {
+        rootState.contract.contract.methods.invest(amount).call()
+          .then(res => {
+            resolve(res)
+          })
+          .catch(e => {
+            reject(e)
+          }) 
+      })
     }
   }
 }
