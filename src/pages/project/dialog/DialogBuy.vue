@@ -90,8 +90,9 @@ export default {
       this.$store.dispatch('BuyToken', this.amount)
         .then(res => {
           this.$q.notify({
-            message: 'hello',
+            message: 'Succesfull purchase',
             position: 'top',
+            color: 'positive'
           })
         })
         .catch(e => {

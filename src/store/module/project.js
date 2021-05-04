@@ -36,12 +36,42 @@ const project = {
           }) 
       })
     },
+    async ClaimToken({ rootState }) {
+      if(!this.$contract) { return }
+
+      return new Promise((resolve, reject) => {
+        this.$contract.methods.claimTokens().send({
+          from: rootState.contract.walletId,
+          gas: 150000,
+        })
+          .then(res => {
+            resolve(res)
+          })
+          .catch(e => {
+            reject(e)
+          }) 
+      })
+    },
+    async HasUserClaimed({ rootState }) {
+      if(!this.$contract) { return }
+
+      return new Promise((resolve, reject) => {
+        this.$contract.methods.claimed(rootState.contract.walletId).call()
+          .then(hasClaim => {
+            resolve(hasClaim)
+          })
+          .catch(e => reject(e))
+      })
+    },
     async TotalClaimableToken({ rootState }) {
       if(!this.$contract) { return }
 
       return new Promise((resolve, reject) => {
         this.$contract.methods.investments(rootState.contract.walletId).call()
-          .then(res => resolve(res))
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
           .catch(e => reject(e))
       })
     },

@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="isShowing" persistent>
+  <q-dialog v-model="isShowing" persistent @show="onDialogShow">
     <q-card class="bn-card-width bn-card">
       <q-card-section class="text-h3 text-weight-light">
         Claim Token
@@ -12,7 +12,7 @@
 
       <q-card-actions class="justify-between">
         <q-btn flat label="cancel" v-close-popup color="negative" />
-        <q-btn push color="blue" size="lg" padding="sm xl" @click="onClickClaim"><span class="text-body1 text-weight-medium">Claim</span></q-btn>
+        <q-btn push color="blue" v-if="!haveClaim" size="lg" padding="sm xl" @click="onClickClaim"><span class="text-body1 text-weight-medium">Claim</span></q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -41,17 +41,22 @@ export default {
 
   data() {
     return {
-      amount: 0
+      amount: 0,
+      haveClaim: false
     }
   },
 
   created() {
-    this.getTotalClaimableToken()
+    
   },
 
   methods: {
+    onDialogShow() {
+      this.getTotalClaimableToken()
+      this.hasUserClaimed()
+    },
     onClickClaim() {
-      this.$store.dispatch('BuyToken', this.amount)
+      this.$store.dispatch('ClaimToken')
         .then(res => {
           this.$q.notify({
             message: 'hello',
@@ -70,7 +75,6 @@ export default {
     getTotalClaimableToken() {
       this.$store.dispatch('TotalClaimableToken')
         .then(res => {
-          console.log(res)
           this.amount = res
         })
         .catch(e => {
@@ -80,6 +84,15 @@ export default {
             color: 'negative',
             position: 'top'
           })
+        })
+    },
+    hasUserClaimed() {
+      this.$store.dispatch('HasUserClaimed')
+        .then(res => {
+          this.haveClaim = res
+        })
+        .catch(e => {
+          console.log(e)
         })
     }
   },
