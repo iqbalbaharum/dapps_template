@@ -6,7 +6,7 @@
       </q-card-section>
       <q-card-section>
         <div class="row text-weight-bold text-body1">
-          <span class="col-8">Your Balance</span><span class="col text-right text-primary">{{ getFormattedBalance }} BNB</span>
+          <span class="col-8">Your Balance</span><span class="col text-right text-primary">{{ balance }} BNB</span>
         </div>
         <div class="row text-body1 text-weight-bold">
           <span class="col-8">Price Per Token</span><span class="col text-right text-primary">0.00029 BNB</span>
@@ -51,9 +51,6 @@ export default {
     ...mapGetters([
       'balance'
     ]),
-    getFormattedBalance() {
-      return (this.$store.getters.balance/1000000000000000000)
-    },
     isShowing: {
       set(value) {
         this.$emit('input', value)
@@ -107,8 +104,8 @@ export default {
         })
     },
     async init() {
-      this.min = (await this.$store.dispatch('GetMinInvest'))/1000000000000000000
-      this.max = (await this.$store.dispatch('GetMaxInvest'))/1000000000000000000
+      this.min = parseInt(await this.$store.dispatch('GetMinInvest'))
+      this.max = parseInt(await this.$store.dispatch('GetMaxInvest'))
     },
     fastPurchase(decimal) {
       this.amount = (this.max * decimal).toFixed(2)

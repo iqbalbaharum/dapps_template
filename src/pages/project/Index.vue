@@ -29,12 +29,12 @@
             <div class="row">
               <div class="">
                 <div class="text-weight-bold text-black">Price Per RDZ Token</div>
-                <div class="text-h4 text-primary text-weight-bold">0.0015 BUSD</div>
+                <div class="text-h4 text-primary text-weight-bold">{{ project.token.price }} BNB</div>
               </div>
               <q-space />
               <div class="">
                 <div class="text-weight-bold text-black">Your Max Approved Amount</div>
-                <div class="text-h4 text-primary text-weight-bold">0.4900 BUSD</div>
+                <div class="text-h4 text-primary text-weight-bold">{{ project.token.max }} BUSD</div>
               </div>
             </div>
             <div class="q-py-md row  q-gutter-x-md bg-blue-1 justify-center q-my-md" v-if="isWhitelist">
@@ -65,26 +65,26 @@
               <q-card-section horizontal>
                 <q-card-section>
                   <div class="">
-                    <div class="text-weight-bold text-black">Swapped</div>
-                    <div class="text-h6 text-grey-8">823.140 BUSD</div>
+                    <div class="text-weight-bold text-black">Sold</div>
+                    <div class="text-h6 text-grey-8">{{ project.token.sold }} BNB</div>
                   </div>
                 </q-card-section>
                 <q-space />
                 <q-card-section>
                   <div class="">
                     <div class="text-weight-bold text-black">Remaining Allocation</div>
-                    <div class="text-h6 text-grey-8">676.860 BUSD</div>
+                    <div class="text-h6 text-grey-8">{{ project.token.left }} BNB</div>
                   </div>
                 </q-card-section>
               </q-card-section>
 
               <q-card-section class="q-gutter-y-sm">
-                <q-linear-progress size="55px" :value="project.currentVote / project.totalVote" rounded color="primary">
+                <q-linear-progress size="55px" :value="project.token.sold / project.token.total" rounded color="primary">
                   <div class="absolute-full flex flex-center">
-                    <q-badge color="white" text-color="accent" :label="`823.14 BNB`" />
+                    <q-badge color="white" text-color="accent" :label="`${project.token.sold} BNB`" />
                   </div>
                 </q-linear-progress>
-                <div class="text-caption text-right">823.140 / 1500.000 BNB</div>
+                <div class="text-caption text-right">{{ project.token.sold }} / {{ project.token.total }} BNB</div>
               </q-card-section>
 
             </q-card>
@@ -165,6 +165,13 @@ export default {
         info: {
           tokenomic: '#',
           whitepaper: '#',
+        },
+        token: {
+          total: 0,
+          left: 0,
+          sold: 0,
+          price: 0,
+          max: 0
         }
       },
     }
@@ -182,6 +189,11 @@ export default {
     }
 
     this.getOpeningTime()
+    this.getMaxPurchase()
+    this.getPerTokenPrice()
+    this.getTotalTokenForSale()
+    this.getTotalUnsoldToken()
+    this.getTotalSoldToken()
   },
 
   watch: {
@@ -218,7 +230,38 @@ export default {
     getOpeningTime() {
       this.$store.dispatch('GetOpeningTime')
         .then(timestamp => {
-          this.project.openDate = new Date(timestamp * 1000);
+          let openingHour = new Date(timestamp * 1000);
+          this.project.openDate = date.formatDate(openingHour, 'YYYY-MM-DD HH:mm:ss');
+        })
+    },
+    getTotalTokenForSale() {
+      this.$store.dispatch('GetTotalTokenForSale')
+        .then(amount => {
+          this.project.token.total = amount
+        })
+    },
+    async getMaxPurchase() {
+      this.$store.dispatch('GetMaxInvest')
+        .then(amount => {
+          this.project.token.max = amount
+        })
+    },
+    getTotalUnsoldToken() {
+      this.$store.dispatch('GetUnsoldToken')
+        .then(amount => {
+          this.project.token.left = amount
+        })
+    },
+    getTotalSoldToken() {
+      this.$store.dispatch('GetSoldToken')
+        .then(amount => {
+          this.project.token.sold = amount
+        })
+    },
+    getPerTokenPrice() {
+      this.$store.dispatch('GetPerTokenPrice')
+        .then(amount => {
+          this.project.token.price = amount
         })
     }
   }

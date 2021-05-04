@@ -6,10 +6,10 @@ const project = {
   },
   actions: {
     async IsWhitelisted({ rootState }) {
-      if(!rootState.contract.contract) { return }
+      if(!this.$contract) { return }
 
       return new Promise((resolve, reject) => {
-        rootState.contract.contract.methods.whitelistedAddresses(rootState.contract.walletId).call()
+        this.$contract.methods.whitelistedAddresses(rootState.contract.walletId).call()
           .then(res => {
             resolve(res)
           })
@@ -19,10 +19,15 @@ const project = {
       })
     },
     async BuyToken({ rootState }, amount) {
-      if(!rootState.contract.contract) { return }
+      if(!this.$contract) { return }
 
       return new Promise((resolve, reject) => {
-        rootState.contract.contract.methods.invest(amount).call()
+        const amountToSend = this.$web3.utils.toWei(amount.toString())
+        this.$contract.methods.invest().send({
+          from: rootState.contract.walletId,
+          value: amountToSend,
+          gas: 1500000,
+        })
           .then(res => {
             resolve(res)
           })
@@ -32,39 +37,88 @@ const project = {
       })
     },
     async TotalClaimableToken({ rootState }) {
-      if(!rootState.contract.contract) { return }
+      if(!this.$contract) { return }
 
       return new Promise((resolve, reject) => {
-        rootState.contract.contract.methods.investments(rootState.contract.walletId).call()
+        this.$contract.methods.investments(rootState.contract.walletId).call()
           .then(res => resolve(res))
           .catch(e => reject(e))
       })
     },
     async GetOpeningTime({ rootState }) {
-      if(!rootState.contract.contract) { return }
-      console.log('here')
+      if(!this.$contract) { return }
       return new Promise((resolve, reject) => {
-        rootState.contract.contract.methods.openTime().call()
+        this.$contract.methods.openTime().call()
           .then(res => resolve(res))
           .catch(e => reject(e))
       })
     },
     async GetMaxInvest({ rootState }) {
-      if(!rootState.contract.contract) { return }
+      if(!this.$contract) { return }
       return new Promise((resolve, reject) => {
-        rootState.contract.contract.methods.maxInvestInWei().call()
-          .then(res => resolve(res))
+        this.$contract.methods.maxInvestInWei().call()
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
           .catch(e => reject(e))
       })
     },
     async GetMinInvest({ rootState }) {
-      if(!rootState.contract.contract) { return }
+      if(!this.$contract) { return }
       return new Promise((resolve, reject) => {
-        rootState.contract.contract.methods.minInvestInWei().call()
-          .then(res => resolve(res))
+        this.$contract.methods.minInvestInWei().call()
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
           .catch(e => reject(e))
       })
-    }
+    },
+    async GetTotalTokenForSale() {
+      if(!this.$contract) { return }
+      return new Promise((resolve, reject) => {
+        this.$contract.methods.totalTokens().call()
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
+          .catch(e => reject(e))
+      })
+    },
+    async GetUnsoldToken() {
+      if(!this.$contract) { return }
+      return new Promise((resolve, reject) => {
+        this.$contract.methods.tokensLeft().call()
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
+          .catch(e => reject(e))
+      })
+    },
+    async GetSoldToken() {
+      if(!this.$contract) { return }
+      return new Promise((resolve, reject) => {
+        this.$contract.methods.totalCollectedWei().call()
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
+          .catch(e => reject(e))
+      })
+    },
+    async GetPerTokenPrice() {
+      if(!this.$contract) { return }
+      return new Promise((resolve, reject) => {
+        this.$contract.methods.tokenPriceInWei().call()
+          .then(res => {
+            let amount = this.$web3.utils.fromWei(res)
+            resolve(amount)
+          })
+          .catch(e => reject(e))
+      })
+    },
   }
 }
 
