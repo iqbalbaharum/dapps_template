@@ -5,7 +5,7 @@
         
         <q-btn to="/" flat dense>
           <q-avatar size="80px">
-            <q-img src="~assets/main/rdlabs-logo.jpeg" />
+            <q-img src="~assets/main/logo.jpeg" />
           </q-avatar>
         </q-btn>
 
@@ -51,6 +51,10 @@ export default {
       let text = 'Connect Wallet'
       return this.walletId && this.networkId !== 0 ? this.walletId : text
     }
+  },
+
+  created() {
+    this.$store.dispatch('InitContract')
   },
 
   methods: {

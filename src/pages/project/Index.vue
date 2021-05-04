@@ -51,7 +51,7 @@
               <q-card-section class="q-gutter-y-md">
                 <div class="text-weight-bold text-black">Open in</div>
                 <div class="text-h4">
-                  <flip-countdown :date-line="project.start" @@timeElapsed="onTimeElapsed" />
+                  <flip-countdown v-if="project.openDate" :deadline="project.openDate" @@timeElapsed="onTimeElapsed" />
                 </div>
               </q-card-section>
 
@@ -116,11 +116,13 @@
     </div>
 
     <dialog-buy v-model="dialog.buy.show" />
+    <dialog-claim v-model="dialog.claim.show" />
   </q-page>
 </template>
 
 <script>
 import DialogBuy from './dialog/DialogBuy'
+import DialogClaim from './dialog/DialogClaim'
 import FlipCountdown from "vue2-flip-countdown";
 import TabAbout from './tab/About'
 import { mapGetters } from 'vuex'
@@ -130,7 +132,7 @@ const { getScrollTarget, setScrollPosition } = scroll
 
 export default {
   components: {
-    FlipCountdown, TabAbout, DialogBuy
+    FlipCountdown, TabAbout, DialogBuy, DialogClaim
   },
   data() {
     return {
@@ -139,6 +141,9 @@ export default {
       isWhitelist: false,
       dialog: {
         buy: {
+          show: false
+        },
+        claim : {
           show: false
         }
       },
@@ -150,7 +155,7 @@ export default {
         totalVote: 90,
         maxBuy: 0.19,
         token: 'BNB',
-        openDate: new Date(),
+        openDate: null,
         closeDate: new Date() + 1,
         channel: {
           telegram: '#',
@@ -175,6 +180,8 @@ export default {
     if(this.walletId) {
       this.isUserWhitelisted()
     }
+
+    this.getOpeningTime()
   },
 
   watch: {
@@ -206,7 +213,13 @@ export default {
       this.dialog.buy.show = true
     },
     onClickClaim() {
-
+      this.dialog.claim.show = true
+    },
+    getOpeningTime() {
+      this.$store.dispatch('GetOpeningTime')
+        .then(timestamp => {
+          this.project.openDate = new Date(timestamp * 1000);
+        })
     }
   }
 }
