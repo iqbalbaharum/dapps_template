@@ -13,8 +13,8 @@
 
         <header-link v-for="(menu, index) in menus['header']" :key="index" :label="menu.meta.title" :to="menu.path" />
 
-        <q-btn push class="q-ml-md sign-in" :class="{ 'bg-positive': walletId, 'bg-accent': !walletId }" color="accent" padding="xs lg" @click="onClickConnect">
-          <span class="ellipsis">{{ getWalletText }}</span>
+        <q-btn class="q-ml-md sign-in bn-button" :class="{ 'bg-positive': walletId, 'bg-accent': !walletId }" color="accent" padding="xs lg" @click="onClickConnect">
+          <span class="ellipsis q-px-md text-weight-bold">{{ getWalletText }}</span>
         </q-btn>
 
       </q-toolbar>
@@ -24,17 +24,17 @@
       <router-view />
     </q-page-container>
 
-    <q-footer>
-    </q-footer>
+    <footer-layout />
   </q-layout>
 </template>
 
 <script>
 import HeaderLink from 'src/components/HeaderLink'
 import { mapGetters } from 'vuex'
+import FooterLayout from './Footer'
 
 export default {
-  components: { HeaderLink },
+  components: { HeaderLink, FooterLayout },
 
   data () {
     return {

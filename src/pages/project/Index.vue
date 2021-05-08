@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="q-py-md">
+    <div class="q-py-md bg-main-block">
       <div class="bn-block items-center justify-center">
         <div class="row q-my-md justify-center q-py-md">
           <div class="col-md-6 q-pr-xl">
@@ -41,12 +41,12 @@
               <q-btn push color="accent" size="lg" padding="sm xl" @click="onClickBuy"><span class="text-body1 text-weight-medium">Buy Token</span></q-btn>
               <q-btn push color="blue-5" size="lg" padding="sm xl" @click="onClickClaim"><span class="text-body1 text-weight-medium">Claim Token</span></q-btn>
             </div>
-            <div class="q-py-md row  q-gutter-x-md bg-blue-1 justify-center q-my-md" v-else>
+            <div class="q-py-md row  q-gutter-x-md bg-blue-1 justify-center q-my-md text-blue-8 text-weight-bold" v-else>
               <div>You're not whitelisted to bid on this project</div>
             </div>
           </div>
           <div class="col-md-6">
-            <q-card class="bn-card q-pa-md bg-yellow-3">
+            <q-card class="bn-card q-pa-md">
 
               <q-card-section class="q-gutter-y-md">
                 <div class="text-weight-bold text-black">Open in</div>
@@ -93,7 +93,7 @@
       </div>
     </div>
 
-    <div class="q-pa-md">
+    <div class="q-pa-md bg-alt-block">
       <div class="bn-block items-center justify-center">
         <div class="row q-my-md q-py-md">
           <q-tabs
@@ -101,14 +101,20 @@
             class="text-grey-8"
             align="left"
           >
-            <q-tab name="detail" label="Pool Details" />
+            <q-tab name="pool" label="Pool Details" />
             <q-tab name="about" label="About the Project" />
             <q-tab name="allocation" label="Your Allocations" />
           </q-tabs>
 
           <q-tab-panels v-model="currentTab" animated id="panel" class="panel">
+            <q-tab-panel name="pool">
+              <tab-pool :project="project" />
+            </q-tab-panel>
             <q-tab-panel name="about">
               <tab-about :project="project" />
+            </q-tab-panel>
+            <q-tab-panel name="allocation">
+              <tab-allocation :project="project" />
             </q-tab-panel>
           </q-tab-panels>
         </div>
@@ -125,6 +131,8 @@ import DialogBuy from './dialog/DialogBuy'
 import DialogClaim from './dialog/DialogClaim'
 import FlipCountdown from "vue2-flip-countdown";
 import TabAbout from './tab/About'
+import TabPool from './tab/Pool'
+import TabAllocation from './tab/Allocation'
 import { mapGetters } from 'vuex'
 
 import { date, scroll } from 'quasar'
@@ -132,7 +140,8 @@ const { getScrollTarget, setScrollPosition } = scroll
 
 export default {
   components: {
-    FlipCountdown, TabAbout, DialogBuy, DialogClaim
+    FlipCountdown, TabAbout, DialogBuy, DialogClaim,
+    TabPool, TabAllocation
   },
   data() {
     return {

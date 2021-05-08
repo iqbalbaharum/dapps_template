@@ -25,7 +25,9 @@ const contract = {
         if(this.$web3) {
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-          // let accounts = await this.$web3.eth.getAccounts()
+          if(!accounts.length) {
+            reject(new Error('Unable to connect to metamask'))
+          }
 
           if(accounts.length > 0) {
             this.dispatch('GetWalletDetail', accounts[0])

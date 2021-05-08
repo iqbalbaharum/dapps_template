@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "./gradient1.scss";
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 // app global css in SCSS form
@@ -19,7 +19,12 @@
 }
 
 .bg-main-block {
-  background: rgba(255, 255, 255, 1);
+  background: url("./../assets/home/bg.png") center no-repeat;
+}
+
+.bg-alt-block {
+  background: url("./../assets/home/bg-alt.jpg");
+  background-size: contain;
 }
 
 .bn-card-width {
@@ -27,8 +32,8 @@
 }
 
 .bn-card {
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -56,4 +61,31 @@
 
 .bn-text-color-telegram {
   color: #0088cc;
+}
+
+.bn-bg-color-medium {
+  background-color: #000000;
+}
+
+// override
+ul.bn-links {
+  padding: 0px;
+  margin: 0px;
+}
+
+ul.bn-links li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: block;
+  padding-top: 0.3em;
+}
+
+a {
+  text-decoration: none;
+  color: $grey-6;
+}
+
+.bn-button {
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
 }
