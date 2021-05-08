@@ -20,11 +20,12 @@ const contract = {
     },
   },
   actions: {
-    ConnectWeb3 ({ commit, dispatch, state }) {
+    async  ConnectWeb3 ({ commit, dispatch, state }) {
       return new Promise(async (resolve, reject) => {
         if(this.$web3) {
-          
-          let accounts = await this.$web3.eth.getAccounts()
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+          // let accounts = await this.$web3.eth.getAccounts()
 
           if(accounts.length > 0) {
             this.dispatch('GetWalletDetail', accounts[0])
