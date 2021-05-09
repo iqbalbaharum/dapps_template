@@ -95,7 +95,7 @@
 
     <div class="q-pa-md bg-alt-block">
       <div class="bn-block items-center justify-center">
-        <div class="row q-my-md q-py-md">
+        <div class="row">
           <q-tabs
             v-model="currentTab"
             class="text-grey-8"
@@ -105,7 +105,8 @@
             <q-tab name="about" label="About the Project" />
             <q-tab name="allocation" label="Your Allocations" />
           </q-tabs>
-
+        </div>
+        <div class="">
           <q-tab-panels v-model="currentTab" animated id="panel" class="panel">
             <q-tab-panel name="pool">
               <tab-pool :project="project" />
@@ -145,7 +146,7 @@ export default {
   },
   data() {
     return {
-      currentTab: 'detail',
+      currentTab: 'pool',
       active: false,
       isWhitelist: false,
       dialog: {
