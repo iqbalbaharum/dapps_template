@@ -26,7 +26,7 @@ const routes = [
           icon: '',
           roles: []
         },
-        component: () => import('pages/Pools.vue')
+        component: () => import('src/pages/Pools.vue')
       },
       {
         path: '/gems',

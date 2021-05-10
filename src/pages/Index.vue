@@ -6,7 +6,7 @@
         <div class="text-h3">Decentralized fundraising for RD Audit Platform</div>
         <div class="text-body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque odio neque, porta non suscipit vel, porttitor a mauris. Pellentesque auctor diam ac est vestibulum scelerisque. Aliquam erat volutpat. Duis gravida, ante a varius euismod, arcu enim dapibus nulla, nec efficitur sem ex non urna.</div>
         <div class="q-gutter-x-md">
-          <q-btn text-color="white" size="md" padding="sm lg" color="primary" class="bn-button"><span class="text-body1">View All Pools</span></q-btn>
+          <q-btn text-color="white" size="md" padding="sm lg" color="primary" class="bn-button" to="/pools"><span class="text-body1">View All Pools</span></q-btn>
         </div>
         <div class="text-h6 q-pt-lg">Follow Us</div>
         <div class="q-gutter-x-md">
