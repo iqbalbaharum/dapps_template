@@ -73,11 +73,9 @@
         
       <div class="col-md-5 col-sm-12 q-gutter-y-md">
         <q-card class="bg-auditor-block q-pa-md q-pl-xl">
-          <q-card-item>
-            <div>Auditor Certification</div>
-            <div class="text-h5 text-weight-bold text-primary">Rug Detective</div>
-            <div class="text-caption">April 14th 2021</div>
-          </q-card-item>
+          <div>Auditor Certification</div>
+          <div class="text-h5 text-weight-bold text-primary">Rug Detective</div>
+          <div class="text-caption">April 14th 2021</div>
         </q-card>
       </div>
     </div>

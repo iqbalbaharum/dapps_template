@@ -46,6 +46,8 @@ const contract = {
 
           if(networkId === 0) { return }
 
+          resolve(accounts[0])
+
         } else {
           reject(new Error('Unable to connect to metamask'))
         }

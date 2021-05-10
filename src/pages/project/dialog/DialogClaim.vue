@@ -58,15 +58,10 @@ export default {
     onClickClaim() {
       this.$store.dispatch('ClaimToken')
         .then(res => {
-          this.$q.notify({
-            message: 'hello',
-            position: 'top',
-          })
         })
         .catch(e => {
-          console.log(e)
           this.$q.notify({
-            message: e,
+            message: e.message,
             color: 'negative',
             position: 'top'
           })
@@ -78,9 +73,8 @@ export default {
           this.amount = res
         })
         .catch(e => {
-          console.log(e)
           this.$q.notify({
-            message: e,
+            message: e.message,
             color: 'negative',
             position: 'top'
           })

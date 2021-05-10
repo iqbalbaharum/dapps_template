@@ -1,6 +1,6 @@
 <template>
   <q-dialog v-model="isShowing" persistent>
-    <q-card class="bn-card-width bn-card">
+    <q-card class="bn-card-width bn-card q-py-md">
       <q-card-section class="text-h3 text-weight-light">
         Buy Token
       </q-card-section>
@@ -22,8 +22,8 @@
         <div class="row q-gutter-x-md q-mb-md">
           <q-btn class="col" push size="lg" label="10%" @click="fastPurchase(0.1)"></q-btn>
           <q-btn class="col" push size="lg" label="25%" @click="fastPurchase(0.25)"></q-btn>
-          <q-btn class="col" push size="lg" color="primary" label="50%" @click="fastPurchase(0.5)"></q-btn>
-          <q-btn class="col" push size="lg" color="primary" label="75%" @click="fastPurchase(0.75)"></q-btn>
+          <q-btn class="col" push size="lg" color="accent" label="50%" @click="fastPurchase(0.5)"></q-btn>
+          <q-btn class="col" push size="lg" color="accent" label="75%" @click="fastPurchase(0.75)"></q-btn>
           <q-btn class="col" push size="lg" color="positive" label="100%" @click="fastPurchase(1)"></q-btn>
         </div>
         <q-input outlined type="number" v-model.number="amount" style="font-size:30px;"/>
@@ -31,7 +31,7 @@
 
       <q-card-actions class="justify-between">
         <q-btn flat label="cancel" v-close-popup color="negative" />
-        <q-btn push color="accent" size="lg" padding="sm xl" @click="onClickBuy"><span class="text-body1 text-weight-medium">Buy Token</span></q-btn>
+        <q-btn push color="secondary" size="lg" padding="sm xl" @click="onClickBuy"><span class="text-body1 text-weight-medium">Buy Token</span></q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -90,23 +90,24 @@ export default {
       this.$store.dispatch('BuyToken', this.amount)
         .then(res => {
           this.$q.notify({
-            message: 'Succesfull purchase',
+            message: 'Waiting for confirmation',
             position: 'top',
-            color: 'positive'
+            color: 'black',
+            timeout: 20000,
+            progress: true,
           })
         })
         .catch(e => {
-          console.log(e)
           this.$q.notify({
-            message: e,
+            message: e.message,
             color: 'negative',
             position: 'top'
           })
         })
     },
     async init() {
-      this.min = parseInt(await this.$store.dispatch('GetMinInvest'))
-      this.max = parseInt(await this.$store.dispatch('GetMaxInvest'))
+      this.min = parseFloat(await this.$store.dispatch('GetMinInvest'))
+      this.max = parseFloat(await this.$store.dispatch('GetMaxInvest'))
     },
     fastPurchase(decimal) {
       this.amount = (this.max * decimal).toFixed(2)

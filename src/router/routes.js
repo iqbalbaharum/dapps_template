@@ -29,16 +29,6 @@ const routes = [
         component: () => import('src/pages/Pools.vue')
       },
       {
-        path: '/gems',
-        meta: {
-          title: 'RD Gems',
-          position: 'header',
-          icon: '',
-          roles: []
-        },
-        component: () => import('pages/Gems.vue')
-      },
-      {
         path: '/project/:id',
         meta: {
           title: '',

@@ -58,11 +58,16 @@ export default {
   },
 
   methods: {
-    onClickConnect() {
+    async onClickConnect() {
       if(!this.walletId) {
-        this.$store.dispatch('ConnectWeb3')
+        const walletId = await this.$store.dispatch('ConnectWeb3')
+        this.$q.notify({
+          type: 'positive',
+          position: 'top',
+          message: `Succesfully login using ${walletId}`
+        })
       } else {
-        this.$store.dispatch('DisconnectWeb3')
+        await this.$store.dispatch('DisconnectWeb3')
       }
     }
   },

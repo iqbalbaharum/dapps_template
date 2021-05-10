@@ -29,6 +29,7 @@ const project = {
           gas: 1500000,
         })
           .then(res => {
+            console.log(res)
             resolve(res)
           })
           .catch(e => {
