@@ -91,7 +91,7 @@ export default {
         {
           id: 1,
           icon: 'https://cdn.quasar.dev/img/avatar.png',
-          title: 'Wall Street Bets IDO',
+          title: 'RD Token',
           description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus velit, cursus eget ultrices eget, aliquet vel risus. Aenean blandit eleifend tincidunt. Praesent viverra malesuada cursus. Morbi neque nunc, interdum et tempus vitae, sodales nec ante. Fusce lobortis eget sem vel viverra. Aliquam fermentum lectus id nulla vulputate laoreet. Nunc ac enim in nibh efficitur fringilla ac faucibus mauris. Ut posuere molestie convallis. Sed ac purus nec erat varius tempus. Suspendisse a fringilla erat. Morbi vel mauris arcu. Aenean non finibus ex. Nam a finibus nisi. Integer nec arcu vel neque vehicula vehicula id sit amet metus.',
           currentVote: 10,
           totalVote: 90,

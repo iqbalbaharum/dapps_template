@@ -1,42 +1,29 @@
 <template>
-  <div class="q-pt-xl">
+  <div class="q-pt-md bg-secondary">
     <div class="bn-block items-center justify-center">
       <div class="row q-my-md justify-center">
         <div class="col">
-          <q-avatar size="150px">
-            <q-img src="~assets/main/logo.jpeg" />
-          </q-avatar>
+          <q-img src="~assets/main/logo-transparent.png" style="max-width:30%;height:auto;" />
         </div>
         <div class="col row">
           <div class="col">
-            <div class="text-h6 text-uppercase grey-10">SOCIAL</div>
             <ul class="bn-links">
-              <li><a href="#">Telegram</a></li>
-              <li><a href="#">Medium</a></li>
-              <li><a href="#">Twitter</a></li>
+              <li><a class="text-white" href="#">Contact Us</a></li>
+              <li><a class="text-white" href="#">FAQ</a></li>
+              <li><a class="text-white" href="#">Twitter</a></li>
+              <li><a class="text-white" href="#">Telegram</a></li>
             </ul>
-          </div>
-          <div class="col">
-            <div class="text-h6 text-uppercase grey-10">RUG DETECTIVES</div>
-            <ul class="bn-links">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Apply for IDO</a></li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="col">
-            <div class="text-h6 text-uppercase grey-10">HELP</div>
-            <ul class="bn-links">
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Terms</a></li>
-              <li><a href="#">Privacy</a></li>
-            </ul>
-          </div>
           </div>
         </div>
       </div>
+      <div class="row justify-between full-width q-py-sm text-center text-white">
+        <span>© 2021 RD Labs. All rights reserved.</span>
+        <span class="q-gutter-x-md">
+          <a class="text-white" target="_blank" href="https://www.rdauditors.com/terms-and-conditions/">Terms and condition</a>
+          <a class="text-white" target="_blank" href="https://www.rdauditors.com/privacy-policy-for-rd-auditors/">Privacy policy</a>
+        </span>
+      </div>
     </div>
-    <div class="bg-footer text-caption full-width q-py-sm text-center text-white">© 2021 RD Labs. All rights reserved.</div>
   </div>
 </template>
 

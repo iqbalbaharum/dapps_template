@@ -5,17 +5,25 @@
   font-family: "PT Sans", sans-serif;
 }
 
-// app global css in SCSS form
-.bn-block {
-  width: 1150px !important;
-  margin: 0 auto;
-  position: relative;
-  display: block;
+@media only screen and (min-width: 768px) {
+  .bn-block {
+    width: 1150px !important;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+  }
+
+  .bn-screen {
+    height: 92vh;
+    width: 100vh;
+  }
 }
 
-.bn-screen {
-  height: 92vh;
-  width: 100vh;
+@media only screen and (max-width: 768px) {
+  .bn-block {
+    padding: 20px;
+    margin: 0 auto;
+  }
 }
 
 .bg-main-block {
