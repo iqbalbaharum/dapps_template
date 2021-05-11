@@ -2,7 +2,7 @@
   <div class="q-pt-md text-weight-bold">
     <div class="bn-block items-center justify-center">
       <div class="row q-my-md justify-between">
-        <img src="~assets/main/logo-transparent.png" />
+        <img src="~assets/main/logo-transparent.png" style="width: 179px; height: 100px;" />
         <div>
           <div class="col">
             <ul class="bn-links">
