@@ -1,18 +1,15 @@
 <template>
   <q-page>
 
-    <div class="bn-screen bg-main-block text-white full-width flex flex-center text-center">
+    <div class="bn-screen text-white full-width flex flex-center text-center">
       <div class="bn-block q-gutter-y-md text-black">
-        <div class="text-h3">Decentralized fundraising for RD Audit Platform</div>
-        <div class="text-body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque odio neque, porta non suscipit vel, porttitor a mauris. Pellentesque auctor diam ac est vestibulum scelerisque. Aliquam erat volutpat. Duis gravida, ante a varius euismod, arcu enim dapibus nulla, nec efficitur sem ex non urna.</div>
+        <div class="text-h3 text-primary text-weight-bold">The epicenter of all things crypto</div>
+        <div class="text-body1">Welcome to the RD Familia, where you will learn everything crypto, finding, vetting, investing and supporting crypto projects.</div>
         <div class="q-gutter-x-md">
           <q-btn text-color="white" size="md" padding="sm lg" color="primary" class="bn-button" to="/pools"><span class="text-body1">View All Pools</span></q-btn>
         </div>
-        <div class="text-h6 q-pt-lg">Follow Us</div>
-        <div class="q-gutter-x-md">
-          <q-btn label="Twitter" class="bn-bg-color-twitter" text-color="white" flat rounded icon="fab fa-twitter" />
-          <q-btn label="Telegram" class="bn-bg-color-telegram" text-color="white" flat rounded icon="fab fa-telegram" />
-          <q-btn label="Medium" rounded class="bn-bg-color-medium" text-color="white" icon="fab fa-medium" flat />
+        <div>
+          <q-img src="~assets/main/main-block.png" style="width: 523px;height: 308px;"/>
         </div>
       </div>
     </div>

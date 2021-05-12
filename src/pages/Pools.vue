@@ -48,7 +48,7 @@
                   </q-avatar>
                 </q-item-section>
                 <q-item-section class="col-4 ellipsis">
-                  <q-item-label class="text-h6 text-primary text-weight-bold">King Of The Hill private Sales</q-item-label>
+                  <q-item-label class="text-h6 text-primary text-weight-bold">RD Token</q-item-label>
                 </q-item-section>
                 <q-item-section class="col-3">
                   <div class="row justify-between text-caption">
@@ -68,7 +68,7 @@
                 </q-item-section>
                 <q-item-section side>
                   <div class="text-grey-8 q-gutter-x-lg">
-                    <q-btn padding="sm lg" size="md" color="primary" label="Details" />
+                    <q-btn padding="sm lg" size="md" color="primary" label="Details" :to="{ path: `/project/${'1'}` }" />
                   </div>
                 </q-item-section>
               </q-item>
