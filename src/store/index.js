@@ -5,6 +5,7 @@ import getters from './getters';
 import app from './module/app'
 import contract from './module/contract'
 import project from './module/project'
+import transaction from './module/transaction'
 
 // import example from './module-example'
 
@@ -24,7 +25,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       app,
       contract,
-      project
+      project,
+      transaction
     },
     getters,
     // enable strict mode (adds overhead!)

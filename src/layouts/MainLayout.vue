@@ -1,26 +1,19 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar class="bg-white text-black">
+    <q-header>
+      <q-toolbar class="bg-black text-white">
         
-        <q-btn to="/" flat dense>
-          <q-avatar size="80px">
-            <q-img src="~assets/main/logo.jpeg" />
-          </q-avatar>
-        </q-btn>
+        <span class="text-weight-bold text-h6">VISUALIZE</span>
 
         <q-space />
 
         <header-link v-for="(menu, index) in menus['header']" :key="index" :label="menu.meta.title" :to="menu.path" />
-
-        <q-btn class="q-ml-md sign-in bn-button" :class="{ 'bg-positive': walletId, 'bg-accent': !walletId }" color="accent" padding="xs lg" @click="onClickConnect">
-          <span class="ellipsis q-px-md text-weight-bold">{{ getWalletText }}</span>
-        </q-btn>
-
+        
+        <connect-btn />
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="bg-black text-white">
       <router-view />
     </q-page-container>
 
@@ -30,11 +23,12 @@
 
 <script>
 import HeaderLink from 'src/components/HeaderLink'
+import ConnectBtn from 'src/components/ConnectBtn'
 import { mapGetters } from 'vuex'
 import FooterLayout from './Footer'
 
 export default {
-  components: { HeaderLink, FooterLayout },
+  components: { HeaderLink, FooterLayout, ConnectBtn },
 
   data () {
     return {
@@ -44,8 +38,7 @@ export default {
   computed: {
     ...mapGetters([
       'menus',
-      'walletId',
-      'networkId'
+      'networkId',
     ]),
     getWalletText() {
       let text = 'Connect Wallet'
@@ -55,21 +48,6 @@ export default {
 
   created() {
     
-  },
-
-  methods: {
-    async onClickConnect() {
-      if(!this.walletId) {
-        const walletId = await this.$store.dispatch('ConnectWeb3')
-        this.$q.notify({
-          type: 'positive',
-          position: 'top',
-          message: `Succesfully login using ${walletId}`
-        })
-      } else {
-        await this.$store.dispatch('DisconnectWeb3')
-      }
-    }
   },
 }
 </script>

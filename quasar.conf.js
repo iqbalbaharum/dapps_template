@@ -22,7 +22,9 @@ module.exports = function (/* ctx */) {
     boot: [
       'i18n',
       'routing',
-      'web3js'
+      'web3js',
+      'notify-defaults',
+      'repository'
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

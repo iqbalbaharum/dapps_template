@@ -109,7 +109,7 @@ export default async ({ app, router, store, Vue }) => {
 
       switch(to.path) {
         case '/':
-          next({ path: '/public' });
+          next({ path: '/dashboard' });
           break
         default: 
           if (

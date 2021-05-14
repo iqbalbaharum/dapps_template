@@ -19,24 +19,14 @@ const routes = [
         component: () => import('pages/Index.vue')
       },
       {
-        path: '/pools',
+        path: '/dashboard',
         meta: {
-          title: 'Pools',
-          position: 'header',
-          icon: '',
-          roles: []
-        },
-        component: () => import('src/pages/Pools.vue')
-      },
-      {
-        path: '/project/:id',
-        meta: {
-          title: '',
+          title: 'Dashboard',
           position: '',
           icon: '',
           roles: []
         },
-        component: () => import('src/pages/project/Index.vue')
+        component: () => import('pages/Dashboard.vue')
       },
     ]
   },

@@ -6,14 +6,14 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .bn-block {
+  .q-block {
     width: 1150px !important;
     margin: 0 auto;
     position: relative;
     display: block;
   }
 
-  .bn-screen {
+  .q-screen {
     height: 92vh;
     width: 100vh;
   }
@@ -26,89 +26,18 @@
   }
 }
 
-.bg-main-block {
-  background: url("./../assets/home/bg.png") center no-repeat;
+// border
+.q-border {
+  border: 1px solid $grey-5;
+  border-radius: 5px;
 }
 
-.bg-alt-block {
-  background: url("./../assets/home/bg-alt.jpg");
-  background-size: contain;
+// notification
+.q-notification__message {
+  font-size: 20px;
 }
 
-.bg-auditor-block {
-  background: url("./../assets/detail/auditor.png");
-  background-size: contain;
-}
-
-.bn-card-width {
-  width: 450px;
-}
-
-.bn-card {
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-}
-
-.bn-bg-gradient-1 {
-  background: linear-gradient(270deg, #f49a44, #fbcc46);
-  background-size: 400% 400%;
-
-  -webkit-animation: AnimationName 30s ease infinite;
-  -moz-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
-}
-
-.bn-bg-color-twitter {
-  background-color: #1da1f2;
-}
-
-.bn-bg-color-telegram {
-  background-color: #0088cc;
-}
-
-.bn-text-color-twitter {
-  color: #1da1f2;
-}
-
-.bn-text-color-telegram {
-  color: #0088cc;
-}
-
-.bn-bg-color-medium {
-  background-color: #000000;
-}
-
-// override
-ul.bn-links {
-  padding: 0px;
-  margin: 0px;
-}
-
-ul.bn-links li {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-  display: block;
-  padding-top: 0.3em;
-}
-
-a {
-  text-decoration: none;
-  color: $grey-6;
-}
-
-.bn-button {
-  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
-}
-
-.bn-info-outline {
-  border: 1px solid #f3893f;
-  box-sizing: border-box;
-  border-radius: 9px;
-  padding: 10px;
-  color: $primary;
-}
-
-.bn-footer {
-  background: linear-gradient(90deg, #f16e3c 27.47%, #f38c3f 71.49%);
+.q-notification__caption {
+  font-size: 14px;
+  color: $grey-9;
 }

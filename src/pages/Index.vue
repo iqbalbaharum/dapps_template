@@ -1,8 +1,8 @@
 <template>
   <q-page>
 
-    <div class="bn-screen text-white full-width flex flex-center text-center">
-      <div class="bn-block q-gutter-y-md text-black">
+    <div class="q-screen text-white full-width flex flex-center text-center">
+      <div class="q-block q-gutter-y-md text-black">
         <div class="text-h3 text-primary text-weight-bold">The epicenter of all things crypto</div>
         <div class="text-body1">Welcome to the RD Familia, where you will learn everything crypto, finding, vetting, investing and supporting crypto projects.</div>
         <div class="q-gutter-x-md">
@@ -16,8 +16,8 @@
 
 
     <div class="bg-alt-block">
-      <div class="bn-screen full-width flex flex-center">
-        <div class="bn-block">
+      <div class="q-screen full-width flex flex-center">
+        <div class="q-block">
           <div class="items-center justify-center">
             <div class="row q-my-md q-gutter-md justify-center">
               <div class="col-md-12 q-py-md text-center">

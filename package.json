@@ -1,8 +1,8 @@
 {
   "name": "rdlauncher",
   "version": "0.0.1",
-  "description": "RD Laucher website for BSC",
-  "productName": "RD Launcher",
+  "description": "See your wallet in big picture",
+  "productName": "Visualize",
   "author": "iqbal <balainkk@gmail.com>",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0",
